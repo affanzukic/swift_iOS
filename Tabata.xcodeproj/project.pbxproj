@@ -91,7 +91,6 @@
 		4B3DCC712438E4FD00CC01FE = {
 			isa = PBXGroup;
 			children = (
-				4BFBA8272444F1B100082008 /* Sound */,
 				4B3DCC7C2438E4FF00CC01FE /* Tabata */,
 				4B3DCC932438E5AE00CC01FE /* TabataTests */,
 				4B3DCC9E2438E5AF00CC01FE /* TabataUITests */,
@@ -114,6 +113,7 @@
 			children = (
 				4B3DCC7D2438E4FF00CC01FE /* AppDelegate.swift */,
 				4B3DCC7F2438E50000CC01FE /* SceneDelegate.swift */,
+				4BFBA8272444F1B100082008 /* Sound */,
 				4B3DCCB12438EB6400CC01FE /* Model */,
 				4B3DCCAE2438E66200CC01FE /* Controller */,
 				4B3DCC862438E5AC00CC01FE /* Assets.xcassets */,
