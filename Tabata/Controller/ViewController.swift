@@ -31,7 +31,6 @@ var breakTimerDone = false
 var recoveryTimerDone = false
 var pauseTimer = false
 var timerAudioDone = false
-let speechSynthesizer = AVSpeechSynthesizer()
 
 class ViewController: UIViewController
 {
@@ -54,6 +53,7 @@ class ViewController: UIViewController
         startPauseButton.setTitle("START", for: .normal)
         
         access.setSetName()
+        ap.setUpVoice()
         setsRemainingLabel.text = "\(access.numberOfSets) sets remaining."
         currentLength.text = "\(String(format: "%02d", 0)):\(String(format: "%02d", 0))"
         totalLength.text = "\(String(format: "%02d", 0)):\(String(format: "%02d", 0))"
@@ -137,11 +137,7 @@ class ViewController: UIViewController
             tempTotalTime -= 1
             currentLength.text = "\(String(format: "%02d", pLength / 60)):\(String(format: "%02d", pLength % 60))"
             totalLength.text = "\(String(format: "%02d", tempTotalTime / 60)):\(String(format: "%02d", tempTotalTime % 60))"
-            
-            if pLength == 3
-            {
-                ap.loadAudio()
-            }
+            ap.countdownVoice(length: pLength)
         }
         else
         {
@@ -175,10 +171,7 @@ class ViewController: UIViewController
             tempTotalTime -= 1
             totalLength.text = "\(String(format: "%02d", tempTotalTime / 60)):\(String(format: "%02d", tempTotalTime % 60))"
             currentLength.text = "\(String(format: "%02d", sLength / 60)):\(String(format: "%02d", sLength % 60))"
-            if sLength == 3
-            {
-                ap.loadAudio()
-            }
+            ap.countdownVoice(length: sLength)
         }
         else if sLength == 0 && noOfSets > 0
         {
@@ -227,11 +220,7 @@ class ViewController: UIViewController
             tempTotalTime -= 1
             totalLength.text = "\(String(format: "%02d", tempTotalTime / 60)):\(String(format: "%02d", tempTotalTime % 60))"
             currentLength.text = "\(String(format: "%02d", bLength / 60)):\(String(format: "%02d", bLength % 60))"
-            
-            if bLength == 3
-            {
-                ap.loadAudio()
-            }
+            ap.countdownVoice(length: bLength)
         }
         else if bLength == 0 && noOfSets - 1 == 0
         {
@@ -276,16 +265,12 @@ class ViewController: UIViewController
             tempTotalTime -= 1
             totalLength.text = "\(String(format: "%02d", tempTotalTime / 60)):\(String(format: "%02d", tempTotalTime % 60))"
             currentLength.text = "\(String(format: "%02d", rLength / 60)):\(String(format: "%02d", rLength % 60))"
-            
-            if rLength == 3
-            {
-                ap.loadAudio()
-            }
-
+            ap.countdownVoice(length: rLength)
         }
         else
         {
             timer.invalidate()
+            ap.synth.speak(ap.intervalDone)
             setsRemainingLabel.text = "\(noOfSets - 1) sets remaining."
             startPauseButton.setTitle("START", for: .normal)
         }
@@ -300,6 +285,7 @@ class ViewController: UIViewController
             startPauseButton.setTitle("PAUSE", for: .normal)
             
             runPreintervalTimer()
+            ap.synth.speak(ap.intervalStarted)
         }
         else if startPauseButton.currentTitle == "PAUSE"
         {
@@ -309,6 +295,7 @@ class ViewController: UIViewController
             {
                 timer.invalidate()
                 pauseTimer = true
+                ap.synth.speak(ap.intervalPaused)
             }
         }
         else
@@ -319,6 +306,7 @@ class ViewController: UIViewController
             {
                 runPreintervalTimer()
                 pauseTimer = false
+                ap.synth.speak(ap.intervalStarted)
             }
         }
     }
@@ -328,6 +316,7 @@ class ViewController: UIViewController
         startPauseButton.setTitle("START", for: .normal)
         
         timer.invalidate()
+        ap.synth.speak(ap.intervalStopped)
         
         currentLength.textColor = .none
         timerAudioDone = false
