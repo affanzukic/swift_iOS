@@ -144,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="124.6376811594203" y="135.9375"/>
+            <point key="canvasLocation" x="125" y="139"/>
         </scene>
         <!--Settings-->
         <scene sceneID="5LV-U4-OtP">
@@ -196,7 +196,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="YUR-fD-uDx">
                                 <rect key="frame" x="150.66666666666666" y="199.66666666666663" width="112.99999999999997" height="127"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="VjL-YY-qZ7">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="VjL-YY-qZ7">
                                         <rect key="frame" x="0.0" y="0.0" width="113" height="95.666666666666671"/>
                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="80"/>
                                         <nil key="textColor"/>
@@ -291,7 +291,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="BkN-89-71Z">
                                 <rect key="frame" x="145.66666666666666" y="201.66666666666663" width="122.66666666666666" height="130"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="r9f-0M-dnV">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="r9f-0M-dnV">
                                         <rect key="frame" x="0.0" y="0.0" width="122.66666666666667" height="99"/>
                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="80"/>
                                         <nil key="textColor"/>
@@ -310,8 +310,11 @@
                                     <constraint firstItem="bic-py-OJ8" firstAttribute="height" secondItem="BkN-89-71Z" secondAttribute="height" multiplier="0.21" id="ysq-xL-y3j"/>
                                 </constraints>
                             </stackView>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="58n-Pi-46W">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="58n-Pi-46W">
                                 <rect key="frame" x="160" y="414.66666666666669" width="94" height="32"/>
+                                <connections>
+                                    <action selector="stepperIncrementation:" destination="OkT-yO-jmq" eventType="valueChanged" id="zNZ-ss-sVn"/>
+                                </connections>
                             </stepper>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
